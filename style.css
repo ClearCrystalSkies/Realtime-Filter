@@ -1,0 +1,15 @@
+canvas{
+    border: 1px solid black;
+}
+h1{
+    color: blueviolet;
+    font-family: 'Yousei Magic';
+    background-color: aquamarine;
+}
+img{
+    width: 50px;
+}
+div{
+    padding-left: 20px;
+    padding-top: 20px;
+}
