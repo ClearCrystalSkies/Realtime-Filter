@@ -1,40 +1,22 @@
-var circle = false;
-var rect = false;
-var ellipse = false;
-function preload() {}
+function preload(){}
 function setup(){
-    canvas = createCanvas(640, 480);
-    canvas.position(600, 100);
+    canvas = createCanvas(300, 300);
+    canvas.center();
     video = createCapture(VIDEO);
+    video.size(300, 300);
     video.hide();
-    tint_color = "";
+    poseNet = ml5.poseNet(video, modelLoaded);
+    poseNet.on('pose', gotPoses);
 }
 function draw(){
-    image(video, 0, 0, 640, 480);
-    tint(tint_color);
-        fill("red");
-        stroke("red")
-        rect(49, 50, 30, 380);
-        rect(561, 50, 30, 380);
-        rect(49, 50, 530, 30);
-        rect(49, 400, 530, 30);
-        fill(10, 30, 34);
-        stroke(10, 30, 34);
-        circle(30, 40, 100);
-        circle(610, 40, 100);
-        circle(30, 440, 100);
-        circle(610, 440, 100);
-        fill("#F28500");
-        stroke("#F28500");
-        ellipse(330, 25, 100, 40);
-        ellipse(330, 455, 100, 40);
-        ellipse(615, 240, 40, 100);
-        ellipse(25, 240, 40, 100);       
+    image(video, 0,0, 300, 300);
 }
-
-function download_img(){
-    save('Filtered Photo.png');
+function take_snapshot(){
+    save('myFilteredImage.png');
 }
- function apply_tint() {
-    tint_color = document.getElementById("tint_input").value;
+function modelLoaded() {
+    console.log("PoseNet has been loaded.");
+}
+function gotPoses(){
+    if(result.length > 0)
 }
